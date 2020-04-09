@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!-- 生成的Java文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 格式化 XML 代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <!-- 格式化java代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+
+        <!-- p0:大小写；p1:生成的pojo，将implements Serializable;p2:分页插件 -->
+        <!-- http://blog.csdn.net/xiao__gui/article/details/51333693 -->
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
+        <!-- <plugin type="cc.dt.plugin.OraclePaginationPlugin"></plugin> -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!--<plugin type="cc.dt.plugin.IgnoreSetterAndGetterPlugin"/>-->
+
+        <!-- 自定义的注释规则，继承 DefaultCommentGenerator 重写 一些方法 -->
+        <!--  这里使用的时候需要由代码运行该配置文件, 否则因为classpath的问题找不到该注释生成器 -->
+        <commentGenerator type="cc.dt.plugin.CustomCommentGenerator">
+            <!-- 是否去除自动生成日期的注释 true：是 ： false:否 -->
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除所有自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://mysql-rw.vip.dev.suixinhuan.com:3306/platform_peggy_contract_claim?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false"
+                        userId="dev"
+                        password="7W1I4YkuPKXM5Huy">
+        </jdbcConnection>
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer
+            true，把JDBC DECIMAL 和  NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <!--生成entity类存放位置 注意: targetProject的路径必须在根目录下已存在-->
+        <javaModelGenerator targetPackage="com.souche.autotest.peggy.dispute.pojo.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!--mybatis 的xml文件地址 注意: targetProject的路径必须在根目录下已存在-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- mybatis的mapper接口 注意: targetProject的路径必须在根目录下已存在-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.souche.autotest.peggy.dispute.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <table tableName="at_dispute_voucher"
+               domainObjectName="DisputeVoucher"
+               alias="dis_vou"
+               mapperName="DisputeVoucherDao"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true" >
+            <!-- 实体类命名规则 -->
+            <domainObjectRenamingRule searchString="AT" replaceString=""/>
+            <columnRenamingRule searchString="c_" replaceString=""/>
+        </table>
+
+        <table tableName="at_launch_platform_dispute_case"
+               domainObjectName="LaunchPlatformDisputeCase"
+               alias="lau_plat_dis_case"
+               mapperName="LaunchPlatformDisputeCaseDao"
+               enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
+               enableSelectByExample="true" selectByExampleQueryId="true" >
+            <!-- 实体类命名规则 -->
+            <domainObjectRenamingRule searchString="AT" replaceString=""/>
+            <columnRenamingRule searchString="c_" replaceString=""/>
+        </table>
+
+    </context>
+</generatorConfiguration>

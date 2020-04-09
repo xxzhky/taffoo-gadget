@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true" scanPeriod="360 seconds" debug="false"><!-- debug: 当此属性设置为true时，将打印出logback内部日志信息  -->
+	<property resource="log.properties" />
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<!-- <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern> -->
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %replace(%caller{1}){'[.]*Caller\+[0-9]{1,2}[\s]+at\b[\s]?|[\r\n]', ''} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	  	<append>true</append><!-- 如果是 true，日志被追加到文件结尾，如果是 false，清空现存文件，默认是true。  -->
+		<!-- <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> 
+			<fileNamePattern>logFile.%d{yyyy-MM-dd}.log</fileNamePattern> 
+　　　　　　　　　<maxHistory>30</maxHistory> 
+		</rollingPolicy> -->
+		<file>${log.dir}/${log.fileName}.log</file>
+		
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy"> 
+			<fileNamePattern>${log.dir}/${log.fileName}-%d{yyyy-MM-dd}-%i.log.zip</fileNamePattern>
+			<minIndex>1</minIndex> 
+			<maxIndex>20</maxIndex> 
+		</rollingPolicy> 
+		
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy"> 
+			<maxFileSize>5MB</maxFileSize> 
+		</triggeringPolicy> 
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="ASYNC_QUEUE" class="ch.qos.logback.classic.AsyncAppender">
+		<discardingThreshold>0</discardingThreshold>
+		<queueSize>10000</queueSize>
+		<appender-ref ref="FILE" />
+	</appender>
+	
+    <logger name="java.sql" level="DEBUG"/>  
+    <logger name="java.sql.Connection" level="DEBUG"/>  
+    <logger name="java.sql.Statement" level="DEBUG"/>  
+    <logger name="java.sql.PreparedStatement" level="DEBUG"/>  
+    <logger name="org.apache.ibatis" level="DEBUG"/>  
+    
+	<root level="debug">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+
+</configuration>

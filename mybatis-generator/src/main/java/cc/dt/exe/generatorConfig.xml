@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 驱动包路径！ -->
+    <classPathEntry location="/Tool/eclipse-jee-neon-2/apache-maven-3.3.9/repository/mysql/mysql-connector-java/5.1.38/mysql-connector-java-5.1.38.jar"/>
+    <context id="MysqlTables" targetRuntime="MyBatis3">
+		<!-- p0:大小写；p1:生成的pojo，将implements Serializable;p2:分页插件 -->
+		<!-- http://blog.csdn.net/xiao__gui/article/details/51333693 -->
+		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"></plugin>
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+		<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
+		<plugin type="cc.dt.plugin.MysqlPaginationPlugin"></plugin>
+        <commentGenerator>
+            <property name="suppressAllComments" value="false" />
+            <property name="suppressDate" value="false"/>
+        </commentGenerator>
+        <!-- jdbc url地址 ！ -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://115.28.20.66:3306/springmvc?generateSimpleParameterMetadata=true" userId="root" password="cyberaudit">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- targetPackage 生成后的路径 ，targetProject 绝对路径  该配置生成java代码  -->
+        <javaModelGenerator targetPackage="org.andy.shop.model" targetProject="/workspace/taffoo/mybatis-generator/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+          <!-- 该配置生成 mybatis 映射文件   -->
+        <sqlMapGenerator targetPackage="org.andy.shop.mapping" targetProject="/workspace/taffoo/mybatis-generator/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 生成 java 接口代码  -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="org.andy.shop.dao" targetProject="/workspace/taffoo/mybatis-generator/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!--  表配置    tableName 表名      domainObjectName java类名，首字母必须大写，否则报字符串越界错误 -->
+		<table schema="springmvc" tableName="user_info" domainObjectName="UserInfo" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true" />
+		<table schema="springmvc" tableName="course_info" domainObjectName="CourseInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+			<property name="useActualColumnNames" value="true"/>
+		</table>
+		<table schema="springmvc" tableName="course_user_info" domainObjectName="CourseUserInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
+
+    </context>
+
+
+</generatorConfiguration> 
