@@ -647,13 +647,43 @@ limitations under the License.</copyright>
 		</dependency>
 	</dependencies>
 
-    <distributionManagement>
+	<repositories>
+		<repository>
+			<id>souche</id>
+			<name>artifactory</name>
+			<url>https://repo.souche-inc.com/repository/public/</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>interval:2</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>souche</id>
+			<name>artifactory</name>
+			<url>https://repo.souche-inc.com/repository/public/</url>
+		</pluginRepository>
+	</pluginRepositories>
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<name>Local Nexus Repository</name>
+			<url>https://repo.souche-inc.com/repository/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>Local Nexus Repository</name>
+			<url>https://repo.souche-inc.com/repository/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+    <!--<distributionManagement>
         <snapshotRepository>
             <id>snapshots</id>
             <name>vipkid Team Repository</name>
             <url>http://maven.vipkid.com.cn/nexus/content/repositories/snapshots</url>
         </snapshotRepository>
-    </distributionManagement>
+    </distributionManagement>-->
 	<!-- <distributionManagement>
 		<repository>
 			<id>archiva</id>
@@ -697,6 +727,7 @@ limitations under the License.</copyright>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.21.0</version>
 				<configuration>
 					<useSystemClassLoader>true</useSystemClassLoader>
 					<forkMode>once</forkMode>
@@ -786,7 +817,7 @@ limitations under the License.</copyright>
 			<plugin>
 			      <groupId>org.apache.maven.plugins</groupId>
 			      <artifactId>maven-resources-plugin</artifactId>
-			      <version>3.0.2</version>
+			      <version>3.1.0</version>
 			      <configuration>
 			      	<escapeString>\</escapeString>
 			        <encoding>${file_encoding}</encoding>
@@ -802,7 +833,17 @@ limitations under the License.</copyright>
 						<nonFilteredFileExtension>png</nonFilteredFileExtension>
 					</nonFilteredFileExtensions>
 			      </configuration>
-			</plugin>			
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<target>${java_source_version}</target>
+					<source>${java_target_version}</source>
+					<encoding>${file_encoding}</encoding>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
