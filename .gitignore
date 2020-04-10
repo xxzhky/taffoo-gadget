@@ -1,3 +1,11 @@
 /.idea/
 /.settings/
 /mybatis-generator/.settings/
+
+.classpath
+.project
+*.iml
+
+../*.iml
+../.classpath
+../.projectgit
