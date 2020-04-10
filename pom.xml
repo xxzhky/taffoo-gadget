@@ -68,7 +68,7 @@
 		<fastjson_version>1.2.8</fastjson_version>
 		<json_lib_version>2.4</json_lib_version>
 		<jackson_version>2.8.9</jackson_version>
-		<lucene_version>6.6.0</lucene_version>
+		<lucene_version>8.5.0</lucene_version>
 		<bsf_version>3.1</bsf_version>
 		<sorcerer_version>0.8</sorcerer_version>
 		<zookeeper_version>3.3.3</zookeeper_version>
