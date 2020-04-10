@@ -55,7 +55,7 @@
 		<!-- Common libs -->
 		<spring_version>4.3.9.RELEASE</spring_version>
 		<springdatarestwebmvc_version>2.6.4.RELEASE</springdatarestwebmvc_version>
-		<springdatajpa_version>1.11.4.RELEASE</springdatajpa_version>
+		<springdatajpa_version>1.11.23.RELEASE</springdatajpa_version>
 		<spring_data_redis_v>1.8.5.RELEASE</spring_data_redis_v>
 		<aspectjweaver_version>1.8.10</aspectjweaver_version>
 		<javassist_version>3.20.0-GA</javassist_version>
