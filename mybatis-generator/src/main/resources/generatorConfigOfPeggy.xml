@@ -3,6 +3,8 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
+    <!--<classPathEntry location="/Users/fred/.m2/repository/mysql/mysql-connector-java/5.1.47/mysql-connector-java-5.1.47.jar"/>-->
+
     <context id="DB2Tables" targetRuntime="MyBatis3">
         <!-- 生成的Java文件的编码 -->
         <property name="javaFileEncoding" value="UTF-8"/>
@@ -16,13 +18,16 @@
         <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"></plugin>
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
         <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
-        <!-- <plugin type="cc.dt.plugin.OraclePaginationPlugin"></plugin> -->
+        <!-- <plugin type="cc.dt.plugin.OraclePaginationPlugin"></plugin>
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
-        <!--<plugin type="cc.dt.plugin.IgnoreSetterAndGetterPlugin"/>-->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" /> -->
+
+
+        <plugin type="cc.dt.plugin.IgnoreSetterAndGetterPlugin"/>
 
         <!-- 自定义的注释规则，继承 DefaultCommentGenerator 重写 一些方法 -->
         <!--  这里使用的时候需要由代码运行该配置文件, 否则因为classpath的问题找不到该注释生成器 -->
-        <commentGenerator type="cc.dt.plugin.CustomCommentGenerator">
+        <commentGenerator type="cc.dt.plugin.CustomCommentGenerator"><!--type="cc.dt.plugin.CustomCommentGenerator"-->
             <!-- 是否去除自动生成日期的注释 true：是 ： false:否 -->
             <property name="suppressDate" value="true"/>
             <!-- 是否去除所有自动生成的注释 true：是 ： false:否 -->
@@ -51,21 +56,21 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.souche.autotest.peggy.dispute.dao" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
-        <table tableName="at_dispute_voucher"
+        <!--<table tableName="at_dispute_voucher"
                domainObjectName="DisputeVoucher"
                alias="dis_vou"
                mapperName="DisputeVoucherDao"
                enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
                enableSelectByExample="true" selectByExampleQueryId="true" >
-            <!-- 实体类命名规则 -->
+            &lt;!&ndash; 实体类命名规则 &ndash;&gt;
             <domainObjectRenamingRule searchString="AT" replaceString=""/>
             <columnRenamingRule searchString="c_" replaceString=""/>
-        </table>
+        </table>-->
 
-        <table tableName="at_launch_platform_dispute_case"
-               domainObjectName="LaunchPlatformDisputeCase"
-               alias="lau_plat_dis_case"
-               mapperName="LaunchPlatformDisputeCaseDao"
+        <table tableName="at_test"
+               domainObjectName="LaunchTestCase"
+               alias="lau_tt"
+               mapperName="LaunchTestCaseDao"
                enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"
                enableSelectByExample="true" selectByExampleQueryId="true" >
             <!-- 实体类命名规则 -->
