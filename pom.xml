@@ -53,7 +53,7 @@
 	</profiles>
 	<properties>
 		<!-- Common libs -->
-		<spring_version>4.3.9.RELEASE</spring_version>
+		<spring_version>5.3.6</spring_version>
 		<springdatarestwebmvc_version>2.6.4.RELEASE</springdatarestwebmvc_version>
 		<springdatajpa_version>1.11.4.RELEASE</springdatajpa_version>
 		<spring_data_redis_v>1.8.5.RELEASE</spring_data_redis_v>
