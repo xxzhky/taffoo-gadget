@@ -99,7 +99,7 @@
 		<derby_version>10.13.1.1</derby_version>
 		
 		<quartz_version>1.6.1</quartz_version>
-		<shiro_version>1.4.0</shiro_version>
+		<shiro_version>1.7.1</shiro_version>
 		<fileupload_version>1.3.3</fileupload_version>
 		<!-- Log libs -->
 		<slf4j_version>1.7.25</slf4j_version>
