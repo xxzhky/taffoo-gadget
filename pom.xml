@@ -96,7 +96,7 @@
 		
 		<hsql_version>2.4.0</hsql_version>
 		<h2_version>1.4.196</h2_version>
-		<derby_version>10.13.1.1</derby_version>
+		<derby_version>10.14.2.0</derby_version>
 		
 		<quartz_version>1.6.1</quartz_version>
 		<shiro_version>1.4.0</shiro_version>
